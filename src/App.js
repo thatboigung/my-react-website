@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import './App.css';
@@ -8,8 +8,25 @@ import Linkups from './pages/Linkups';
 import Chat from './pages/Chat';
 import About from './pages/About';
 import PostPage from './pages/PostPage';
+import Auth from './components/Auth';
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  const handleLogin = (userData) => {
+    setUser(userData);
+  };
+
+  if (!user) {
+    return (
+      <Router>
+        <div className="App">
+          <Auth onLogin={handleLogin} />
+        </div>
+      </Router>
+    );
+  }
+
   return (
     <Router>
       <div className="App">
