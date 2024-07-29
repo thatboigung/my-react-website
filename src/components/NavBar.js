@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { FaHome, FaBook, FaLink, FaComments, FaInfoCircle } from 'react-icons/fa';
+import { FaHome, FaBook, FaLink, FaComments, FaUserCircle } from 'react-icons/fa';
 import './NavBar.css';
 
 function NavBar() {
@@ -13,8 +13,8 @@ function NavBar() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/leaks" activeClassName="active">
-            <FaBook /> <span>Leaks</span>
+          <NavLink to="/encounters" activeClassName="active">
+            <FaBook /> <span>Encounters</span>
           </NavLink>
         </li>
         <li>
@@ -28,8 +28,8 @@ function NavBar() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/about" activeClassName="active">
-            <FaInfoCircle /> <span>About</span>
+          <NavLink to="/profile" activeClassName="active">
+            <FaUserCircle /> <span>Profile</span>
           </NavLink>
         </li>
       </ul>

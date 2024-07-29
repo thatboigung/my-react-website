@@ -13,7 +13,7 @@ function SignUp() {
     event.preventDefault();
     setLoading(true);
     try {
-      const response = await fetch('http://localhost/api/signup.php', {
+      const response = await fetch('http://localhost/witterverseBackend/signUp.inc.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

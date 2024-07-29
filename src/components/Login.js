@@ -10,7 +10,7 @@ function Login({ onLogin }) {
     event.preventDefault();
     setLoading(true);
     try {
-      const response = await fetch('http://localhost/api/login.php', {
+      const response = await fetch('http://localhost/witterverseBackend/logIn.inc.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -19,7 +19,9 @@ function Login({ onLogin }) {
       });
       const data = await response.json();
       if (data.success) {
+        localStorage.setItem('userId', data.user.id);
         onLogin(data.user);
+
       } else {
         alert(data.message);
       }

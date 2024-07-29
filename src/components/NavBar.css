@@ -1,6 +1,10 @@
 .NavBar {
   background-color: #2c003e;
   padding: 10px 0;
+  position: sticky;top: 0;
+  z-index: 100;
+  width: 100%;
+  min-width: 330px;
 }
 
 .NavBar ul {
@@ -37,8 +41,8 @@
 }
 
 @media (max-width: 768px) {
-  .NavBar ul {
-    flex-direction: column;
+  .NavBar span {
+    display: none;
   }
 
   .NavBar a {

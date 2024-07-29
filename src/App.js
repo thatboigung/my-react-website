@@ -1,46 +1,72 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import './App.css';
 import ConfessionsAndStories from './pages/ConfessionsAndStories';
-import Leaks from './pages/Leaks';
+import EncountersPage from './pages/EncountersPage';
 import Linkups from './pages/Linkups';
 import Chat from './pages/Chat';
-import About from './pages/About';
+import Profile from './pages/Profile';
 import PostPage from './pages/PostPage';
 import Auth from './components/Auth';
+import EditProfile from './pages/edit_prifile';
 
 function App() {
   const [user, setUser] = useState(null);
 
-  const handleLogin = (userData) => {
-    setUser(userData);
+  useEffect(() => {
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      // Fetch user data using userId if necessary
+      // Assuming we have a getUser function to fetch user details
+      const getUser = async (userId) => {
+        const response = await fetch(`http://localhost/witterverseBackend/getUser.php?userId=${userId}`);
+        const data = await response.json();
+        if (data.success) {
+          setUser(data.user);
+        } else {
+          localStorage.removeItem('userId');
+          setUser(null);
+        }
+      };
+      getUser(userId);
+    }
+  }, []);
+
+  const handleLogin = (user) => {
+    setUser(user);
   };
 
-  if (!user) {
-    return (
-      <Router>
-        <div className="App">
-          <Auth onLogin={handleLogin} />
-        </div>
-      </Router>
-    );
-  }
+  const handleLogout = () => {
+    localStorage.removeItem('userId');
+    setUser(null);
+  };
 
   return (
     <Router>
       <div className="App">
-        <NavBar />
-        <div className="content">
+        {user ? (
+          <>
+            <NavBar onLogout={handleLogout} />
+            <div className="content">
+              <Routes>
+                <Route path="/" element={<ConfessionsAndStories />} />
+                <Route path="/encounters" element={<EncountersPage />} />
+                <Route path="/linkups" element={<Linkups />} />
+                <Route path="/chat" element={<Chat />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/post/:postId" element={<PostPage />} />
+                <Route path="/edit-profile" element={<EditProfile />} />
+                <Route path="*" element={<Navigate to="/" />} />
+              </Routes>
+            </div>
+          </>
+        ) : (
           <Routes>
-            <Route path="/" element={<ConfessionsAndStories />} />
-            <Route path="/leaks" element={<Leaks />} />
-            <Route path="/linkups" element={<Linkups />} />
-            <Route path="/chat" element={<Chat />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/post/:postId" element={<PostPage />} />
+            <Route path="/auth" element={<Auth onLogin={handleLogin} />} />
+            <Route path="*" element={<Navigate to="/auth" />} />
           </Routes>
-        </div>
+        )}
       </div>
     </Router>
   );
