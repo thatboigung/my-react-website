@@ -36,24 +36,29 @@ function Chat() {
   return (
     <div className="chat-page">
       <div className="container">
-        <h1>Chat</h1>
         <div className="liked-users-section">
-          <h2>People Who Liked You</h2>
+          <h3>Likes</h3>
           <div className="liked-users">
             {likedUsers.map((user) => (
-              <div key={user.id} className="liked-user">
+              <div key={user.id} className="">
                 <img src={`http://localhost/witterverseBackend/${user.profile_pic}`} alt={user.name} className="liked-user-pic" />
               </div>
             ))}
           </div>
         </div>
         <div className="mutual-likes-section">
-          <h2>Mutual Likes</h2>
+          <h2>Chat</h2>
           <div className="mutual-likes">
             {mutualLikes.map((user) => (
               <Link to={`/chat/${user.id}`} key={user.id} className="mutual-like">
-                <img src={`http://localhost/witterverseBackend/${user.profile_pic}`} alt={user.name} className="mutual-like-pic" />
-                <p>{user.name}</p>
+                <div className='mutual-like-user'>
+                 <div>
+                  <img src={`http://localhost/witterverseBackend/${user.profile_pic}`} alt={user.name} className="mutual-like-pic" />
+                </div>
+                <div> <h3>{user.name}</h3>
+                  <p>Chat with Taps</p>
+                </div> 
+                </div>
               </Link>
             ))}
           </div>

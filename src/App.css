@@ -61,3 +61,20 @@ p {
   height: 100%;
   object-fit: cover;
 }
+.back-button {
+  background-color: #6200ea;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.back-button:hover {
+  background-color: #4500b0;
+}
+
+.content {
+  padding: 20px;
+}

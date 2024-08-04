@@ -1,0 +1,26 @@
+.linkup-page input{
+    padding: 7px;
+    font-size: 20px;
+    border-radius: 12px;
+    outline: none;
+}
+.linkup-page h3{
+    margin-top: 20px;
+    font-size:25px;
+}
+.linkups{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* see notes below */
+    grid-gap: 1em;  
+}
+.linkups .linkup-item{
+    height: 400px;
+    width: 100%;
+    background-color:  #1a001f;
+    border-radius: 6px;
+}
+.linkup-item h2{
+    position: relative;
+    top: 60px;
+    font-size: 30px;
+}

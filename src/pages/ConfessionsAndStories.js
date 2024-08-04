@@ -172,7 +172,7 @@ function ConfessionsAndStories() {
     <div key={post.id} className={`post ${post.isPosting ? 'posting' : ''}`}>
       <p>{post.text}</p>
       <div className="post-meta">
-        <span>{post.date} - {post.city}</span>
+        <span>{post.date}</span>
         <div className="post-icons">
           <FaHeart
             onClick={() => handleLike(post.id)}
@@ -186,12 +186,7 @@ function ConfessionsAndStories() {
 
   return (
     <div className="confessions-and-stories">
-        <div className="user-info">
-            <h2>{user.username}</h2>
-            <p>{user.email}</p>
-        </div>
-        <form onSubmit={handleSubmit}>
-            <h1>Confessions & Stories</h1>
+              <form onSubmit={handleSubmit}>
             <textarea
                 value={text}
                 onChange={handleChange}

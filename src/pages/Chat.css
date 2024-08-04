@@ -53,7 +53,8 @@ body {
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #e0e0e0;
+    filter: blur(1.6px);
+    border: 2px solid black;
   }
   
   .chat-section {
@@ -106,8 +107,7 @@ body {
     cursor: pointer;
   }
   .chat-page {
-    display: flex;
-    justify-content: center;
+    text-align: left;
     align-items: center;
     min-height: 100vh;
     background-color: #1a001f;
@@ -116,28 +116,42 @@ body {
   .container {
     background-color: #2c003e;
     padding: 20px;
-    border-radius: 8px;
+    min-height: 100vh;
     max-width: 700px;
     width: 100%;
-    text-align: center;
+    
   }
   
   .liked-users-section, .mutual-likes-section {
     margin-bottom: 20px;
   }
   
-  .liked-users, .mutual-likes {
+  
+  .liked-users {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    justify-content: center;
   }
-  
-  .liked-user, .mutual-like {
+  .mutual-like{
+    text-decoration: none;
+  }
+  .mutual-like-user{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    
+  }
+  .mutual-like-user h3{
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+  }
+  .liked-user{
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 80px;
+    
   }
   
   .liked-user-pic, .mutual-like-pic {
@@ -146,7 +160,7 @@ body {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 5px;
-    border: 2px solid #e0e0e0;
+  
   }
   
   .mutual-like p {

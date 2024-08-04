@@ -10,6 +10,7 @@ import Profile from './pages/Profile';
 import PostPage from './pages/PostPage';
 import Auth from './components/Auth';
 import EditProfile from './pages/edit_prifile';
+import ChatRoom from './pages/ChatRoom'; // Import ChatRoom
 
 function App() {
   const [user, setUser] = useState(null);
@@ -17,8 +18,6 @@ function App() {
   useEffect(() => {
     const userId = localStorage.getItem('userId');
     if (userId) {
-      // Fetch user data using userId if necessary
-      // Assuming we have a getUser function to fetch user details
       const getUser = async (userId) => {
         const response = await fetch(`http://localhost/witterverseBackend/getUser.php?userId=${userId}`);
         const data = await response.json();
@@ -54,6 +53,7 @@ function App() {
                 <Route path="/encounters" element={<EncountersPage />} />
                 <Route path="/linkups" element={<Linkups />} />
                 <Route path="/chat" element={<Chat />} />
+                <Route path="/chat/:userId" element={<ChatRoom />} /> {/* Add ChatRoom route */}
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/post/:postId" element={<PostPage />} />
                 <Route path="/edit-profile" element={<EditProfile />} />

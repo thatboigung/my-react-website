@@ -68,7 +68,11 @@
     margin-bottom: 10px;
     background-color: #2c003e;
   }
-  
+  .post p{
+    width: 100%;
+    text-overflow: clip;
+    text-wrap: wrap;
+  }
   .post-meta {
     display: flex;
     justify-content: space-between;
